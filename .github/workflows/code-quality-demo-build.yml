@@ -1,0 +1,42 @@
+name: code-quality-demo Build
+
+# Trunk-based: jeder Push nach main baut und prüft; zusätzlich manuell startbar
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'code-quality-demo/**'
+      - '.github/workflows/code-quality-demo-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: code-quality-demo
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: code-quality-demo/pom.xml
+      - name: Bauen, testen und prüfen (JaCoCo, Checkstyle, PMD, SpotBugs)
+        run: ./mvnw -B verify
+      - name: Reports hochladen
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: code-quality-reports
+          path: |
+            code-quality-demo/target/site/jacoco/
+            code-quality-demo/target/site/jacoco-it/
+            code-quality-demo/target/checkstyle-result.xml
+            code-quality-demo/target/pmd.xml
+            code-quality-demo/target/spotbugsXml.xml
+          if-no-files-found: warn

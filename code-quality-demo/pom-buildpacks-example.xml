@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Beispiel: Spring Boot Buildpacks als Alternative zu Jib.
+    Kein vollständiges POM, nur der Ausschnitt für <properties> und das
+    spring-boot-maven-plugin. Aufruf:
+      ./mvnw spring-boot:build-image                      (Image lokal, braucht Docker)
+      ./mvnw spring-boot:build-image -Dspring-boot.build-image.publish=true
+    Für den Push nach GHCR die Umgebungsvariablen GHCR_USERNAME und GHCR_TOKEN setzen
+    (Token mit Scope write:packages bzw. in GitHub Actions secrets.GITHUB_TOKEN).
+-->
+<project>
+    <!-- ...bestehende Konfiguration... -->
+
+    <properties>
+        <docker.image.name>ghcr.io/lars-gentsch-thb/ccdo-vl4-code-quality</docker.image.name>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <name>${docker.image.name}:${project.version}</name>
+                        <tags>
+                            <tag>${docker.image.name}:latest</tag>
+                        </tags>
+
+                        <!-- Paketo-Builder (Standard bei Spring Boot 3.5) -->
+                        <builder>paketobuildpacks/builder-noble-java-tiny</builder>
+
+                        <env>
+                            <BP_JVM_VERSION>21</BP_JVM_VERSION>
+                        </env>
+                    </image>
+
+                    <docker>
+                        <publishRegistry>
+                            <username>${env.GHCR_USERNAME}</username>
+                            <password>${env.GHCR_TOKEN}</password>
+                            <url>https://ghcr.io</url>
+                        </publishRegistry>
+                    </docker>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,5 @@
+# Maven Wrapper: Shell-Skript mit LF, Windows-Skript mit CRLF
+mvnw      text eol=lf
+*.sh      text eol=lf
+mvnw.cmd  text eol=crlf
+*.cmd     text eol=crlf

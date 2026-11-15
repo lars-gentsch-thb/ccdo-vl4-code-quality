@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: maven
+    directory: /code-quality-demo
+    schedule:
+      interval: weekly
+    ignore:
+      # Kurs bleibt bei Spring Boot 3.5 (wie spring-boot-webapp-uebung); Boot 4 bewusst separat
+      - dependency-name: org.springframework.boot:spring-boot-starter-parent
+        update-types: [version-update:semver-major]
+  - package-ecosystem: maven
+    directory: /mutation-testing
+    schedule:
+      interval: weekly
+    ignore:
+      # JUnit 6 erst, wenn pitest-junit5-plugin es offiziell unterstützt
+      - dependency-name: org.junit:junit-bom
+        update-types: [version-update:semver-major]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

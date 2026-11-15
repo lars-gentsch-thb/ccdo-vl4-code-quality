@@ -1,0 +1,46 @@
+name: code-quality-demo SonarQube Cloud
+
+# Analyse mit dem Maven-Scanner (die frühere sonarcloud-github-action ist deprecated)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'code-quality-demo/**'
+      - '.github/workflows/code-quality-demo-sonar.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: code-quality-demo
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0  # volle Historie für bessere Analyse (Blame, neuer Code)
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: code-quality-demo/pom.xml
+      - name: Cache für SonarQube-Cloud-Pakete
+        uses: actions/cache@v6
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Bauen, testen und analysieren
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "::warning::Secret SONAR_TOKEN fehlt, Analyse wird übersprungen (siehe README, Abschnitt SonarQube Cloud)."
+            exit 0
+          fi
+          # sonar.organization und sonar.projectKey stehen in der pom.xml
+          ./mvnw -B verify sonar:sonar
