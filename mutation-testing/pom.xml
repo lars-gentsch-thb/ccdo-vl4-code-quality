@@ -17,7 +17,8 @@
 
     <!--
       JUnit 5 (Jupiter) statt JUnit 6: pitest-junit5-plugin 1.2.3 ist gegen
-      die JUnit Platform 1.x gebaut; Spring Boot 3.5 nutzt ebenfalls JUnit 5.
+      die JUnit Platform 1.x gebaut (code-quality-demo nutzt mit Spring Boot 4.1
+      bereits JUnit 6 aus dem Boot-BOM; dieses Projekt ist unabhängig davon).
     -->
     <junit.version>5.14.4</junit.version>
     <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>

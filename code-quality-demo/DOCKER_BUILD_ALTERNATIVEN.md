@@ -23,7 +23,7 @@ Für Spring-Boot-Apps gibt es zwei verbreitete Alternativen, die das Image direk
 ./mvnw spring-boot:build-image -Dspring-boot.build-image.publish=true
 ```
 
-- Bereits im `spring-boot-maven-plugin` enthalten, keine zusätzliche Dependency.
+- Bereits im `spring-boot-maven-plugin` enthalten, keine zusätzliche Dependency (Spring Boot 4.1 nutzt standardmäßig den Builder `paketobuildpacks/builder-noble-java-tiny`).
 - Braucht einen Docker-Daemon (oder Podman), der Build läuft in Containern der Paketo-Buildpacks.
 - Konfigurationsbeispiel: `pom-buildpacks-example.xml`.
 

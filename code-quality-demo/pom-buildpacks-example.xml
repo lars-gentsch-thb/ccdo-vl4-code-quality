@@ -27,7 +27,7 @@
                             <tag>${docker.image.name}:latest</tag>
                         </tags>
 
-                        <!-- Paketo-Builder (Standard bei Spring Boot 3.5) -->
+                        <!-- Paketo-Builder (Standard bei Spring Boot 4.1) -->
                         <builder>paketobuildpacks/builder-noble-java-tiny</builder>
 
                         <env>

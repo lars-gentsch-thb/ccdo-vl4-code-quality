@@ -7,7 +7,7 @@
 
 Demo-Repo zur Vorlesung 4 von **Cloud Computing: Entwicklung und Betrieb (CCDO)** an der TH Brandenburg (Thema Code Quality und Security in der Pipeline).
 Du siehst hier, wie statische Analyse, Testabdeckung, Mutation Testing und Image-Scanning als Quality Gates in GitHub Actions laufen.
-Alles mit Java 21 und Maven Wrapper, Spring Boot 3.5 wie in [spring-boot-webapp-uebung](https://github.com/lars-gentsch-thb/spring-boot-webapp-uebung).
+Alles mit Java 21 und Maven Wrapper, Spring Boot 4.1 (Spring Framework 7, JUnit 6) wie in [ccdo-vl3-docker](https://github.com/lars-gentsch-thb/ccdo-vl3-docker).
 
 ## Aufbau
 
@@ -46,6 +46,9 @@ Wo du die Ergebnisse findest:
 
 Tests mit Endung `*Tests` laufen als Unit-Tests (Surefire), Tests mit Endung `*IT` als Integrationstests (Failsafe).
 Eine andere Endung (z. B. `*Test`) wird stillschweigend nicht ausgeführt.
+
+Hinweis zu Spring Boot 4: Der Web-Starter heißt jetzt `spring-boot-starter-webmvc`, für Web-Tests kommt der modulare Test-Starter `spring-boot-starter-webmvc-test` dazu.
+`@SpringBootTest` liefert MockMvc nur noch zusammen mit `@AutoConfigureMockMvc` (Paket `org.springframework.boot.webmvc.test.autoconfigure`), siehe `HelloControllerTests`.
 
 ## Mutation Testing mit PIT
 

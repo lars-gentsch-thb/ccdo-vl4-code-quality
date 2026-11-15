@@ -4,10 +4,6 @@ updates:
     directory: /code-quality-demo
     schedule:
       interval: weekly
-    ignore:
-      # Kurs bleibt bei Spring Boot 3.5 (wie spring-boot-webapp-uebung); Boot 4 bewusst separat
-      - dependency-name: org.springframework.boot:spring-boot-starter-parent
-        update-types: [version-update:semver-major]
   - package-ecosystem: maven
     directory: /mutation-testing
     schedule:
