@@ -6,7 +6,7 @@
 [![mutation-testing PIT](https://github.com/lars-gentsch-thb/ccdo-vl4-code-quality/actions/workflows/mutation-testing.yml/badge.svg)](https://github.com/lars-gentsch-thb/ccdo-vl4-code-quality/actions/workflows/mutation-testing.yml)
 
 Demo-Repo zur Vorlesung 4 von **Cloud Computing: Entwicklung und Betrieb (CCDO)** an der TH Brandenburg (Thema Code Quality und Security in der Pipeline).
-Du siehst hier, wie statische Analyse, Testabdeckung, Mutation Testing und Image-Scanning als Quality Gates in GitHub Actions laufen.
+Sie sehen hier, wie statische Analyse, Testabdeckung, Mutation Testing und Image-Scanning als Quality Gates in GitHub Actions laufen.
 Alles mit Java 21 und Maven Wrapper, Spring Boot 4.1 (Spring Framework 7, JUnit 6) wie in [ccdo-vl3-docker](https://github.com/lars-gentsch-thb/ccdo-vl3-docker).
 
 ## Aufbau
@@ -15,7 +15,7 @@ Alles mit Java 21 und Maven Wrapper, Spring Boot 4.1 (Spring Framework 7, JUnit 
 code-quality-demo/      Spring-Boot-App mit JaCoCo, Checkstyle, PMD, SpotBugs, SonarQube Cloud, Jib
   pom.xml               vollständige Konfiguration aller Werkzeuge
   pom-jacoco.xml        Snippets für Übung 1 (je ein Werkzeug zum Übernehmen
-  pom-checkstyle.xml      in dein eigenes Projekt, Abschnitt "Beginn" bis "Ende")
+  pom-checkstyle.xml      in Ihr eigenes Projekt, Abschnitt "Beginn" bis "Ende")
   pom-pmd.xml
   checkstyle.xml        Google Java Style (aus Checkstyle 14.4.0)
   pom-buildpacks-example.xml, DOCKER_BUILD_ALTERNATIVEN.md   Jib vs. Buildpacks vs. Dockerfile
@@ -26,7 +26,7 @@ mutation-testing/       Palindrom-Checker für Mutation Testing mit PIT (Übung 
 
 ## Lokal bauen
 
-Du brauchst nur ein JDK 21; Maven lädt der Wrapper (`./mvnw`) beim ersten Aufruf selbst.
+Sie brauchen nur ein JDK 21; Maven lädt der Wrapper (`./mvnw`) beim ersten Aufruf selbst.
 
 ```bash
 cd code-quality-demo
@@ -35,7 +35,7 @@ cd code-quality-demo
 ./mvnw site              # HTML-Reports unter target/site (PMD mit verlinktem Quelltext)
 ```
 
-Wo du die Ergebnisse findest:
+Wo Sie die Ergebnisse finden:
 
 | Werkzeug | Ergebnis | Bricht den Build ab? |
 |---|---|---|
@@ -64,7 +64,7 @@ Details zur Übung stehen in [mutation-testing/README.md](mutation-testing/READM
 
 1. Auf [sonarcloud.io](https://sonarcloud.io) mit GitHub anmelden, Organisation anlegen bzw. importieren und das Repository als Projekt hinzufügen. Unter *Administration → Analysis Method* die **Automatic Analysis abschalten** (sonst bricht die CI-Analyse ab).
 2. Unter *My Account → Security* ein Token erzeugen und im GitHub-Repo unter *Settings → Secrets and variables → Actions* als Secret `SONAR_TOKEN` speichern.
-3. In `code-quality-demo/pom.xml` die Properties `sonar.organization` und `sonar.projectKey` an deine Werte anpassen (stehen im Projekt unter *Information*). Beim nächsten Push nach `main` läuft der Workflow `code-quality-demo-sonar.yml` (`./mvnw verify sonar:sonar`); ohne Secret überspringt er die Analyse mit einer Warnung.
+3. In `code-quality-demo/pom.xml` die Properties `sonar.organization` und `sonar.projectKey` an Ihre Werte anpassen (stehen im Projekt unter *Information*). Beim nächsten Push nach `main` läuft der Workflow `code-quality-demo-sonar.yml` (`./mvnw verify sonar:sonar`); ohne Secret überspringt er die Analyse mit einer Warnung.
 
 Lokal geht es auch: `SONAR_TOKEN=... ./mvnw verify sonar:sonar`.
 

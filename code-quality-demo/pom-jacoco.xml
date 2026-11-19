@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Snippet für Übung 1 (JaCoCo): Ausschnitt zwischen "Beginn" und "Ende"
-    in die pom.xml deines Projekts übernehmen. Die vollständige Konfiguration
+    in die pom.xml Ihres Projekts übernehmen. Die vollständige Konfiguration
     aller Werkzeuge steht in der pom.xml dieses Ordners.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -118,7 +118,7 @@
                         <configuration>
                             <!--
                                 Gemessen wird nur, was die Tests ausführen. Achte auf die
-                                richtigen Endungen deiner Testklassen (*Tests bzw. *IT),
+                                richtigen Endungen Ihrer Testklassen (*Tests bzw. *IT),
                                 sonst laufen sie nicht (siehe surefire/failsafe oben).
                             -->
                             <rules>

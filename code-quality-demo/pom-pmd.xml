@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Snippet für Übung 1 (PMD): Ausschnitt zwischen "Beginn" und "Ende"
-    in die pom.xml deines Projekts übernehmen. Die vollständige Konfiguration
+    in die pom.xml Ihres Projekts übernehmen. Die vollständige Konfiguration
     aller Werkzeuge steht in der pom.xml dieses Ordners.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

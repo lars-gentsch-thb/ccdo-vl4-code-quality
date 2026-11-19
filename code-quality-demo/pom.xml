@@ -24,7 +24,7 @@
 
 		<!--
 			SonarQube Cloud (ehemals SonarCloud)
-			Platzhalter: an deine Organisation und deinen Projektschlüssel anpassen.
+			Platzhalter: an Ihre Organisation und Ihren Projektschlüssel anpassen.
 			Beides steht in SonarQube Cloud unter "Information" des Projekts.
 		-->
 		<sonar.organization>lars-gentsch-thb</sonar.organization>

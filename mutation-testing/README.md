@@ -1,11 +1,11 @@
 # Mutation Testing mit PIT am Beispiel eines Palindroms
 
-Übung 4 der VL4: Du schreibst Tests für `PalindromeChecker` und prüfst mit [PIT](https://pitest.org), wie gut deine Tests wirklich sind.
-PIT verändert den Code an vielen kleinen Stellen (Mutanten) und schaut, ob deine Tests das merken.
-Überlebt ein Mutant, fehlt dir ein Test.
+Übung 4 der VL4: Sie schreiben Tests für `PalindromeChecker` und prüfen mit [PIT](https://pitest.org), wie gut Ihre Tests wirklich sind.
+PIT verändert den Code an vielen kleinen Stellen (Mutanten) und schaut, ob Ihre Tests das merken.
+Überlebt ein Mutant, fehlt Ihnen ein Test.
 
 - Code: `src/main/java/tdd/PalindromeChecker.java`
-- Tests: `src/test/java/tdd/PalindromeCheckerTest.java` (die leeren Tests füllst du aus)
+- Tests: `src/test/java/tdd/PalindromeCheckerTest.java` (die leeren Tests füllen Sie aus)
 
 ## PIT ausführen
 
@@ -13,10 +13,10 @@ PIT verändert den Code an vielen kleinen Stellen (Mutanten) und schaut, ob dein
 ./mvnw test-compile org.pitest:pitest-maven:mutationCoverage
 ```
 
-Den Report findest du unter `target/pit-reports/index.html`.
+Den Report finden Sie unter `target/pit-reports/index.html`.
 In GitHub Actions läuft PIT bei jedem Push nach `main` (Workflow `mutation-testing.yml`), der Report liegt dort als Artifact `pit-report`.
 
-Optional: In der `pom.xml` kannst du `<mutationThreshold>` einkommentieren. Dann bricht der Build ab, wenn der Mutation Score darunter liegt.
+Optional: In der `pom.xml` können Sie `<mutationThreshold>` einkommentieren. Dann bricht der Build ab, wenn der Mutation Score darunter liegt.
 
 ## Definition
 

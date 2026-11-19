@@ -1,6 +1,6 @@
 # Container-Images ohne eigenes Dockerfile
 
-In VL3 hast du das Image mit einem einstufigen `Dockerfile` aus dem fertigen JAR gebaut.
+In VL3 haben Sie das Image mit einem einstufigen `Dockerfile` aus dem fertigen JAR gebaut.
 Für Spring-Boot-Apps gibt es zwei verbreitete Alternativen, die das Image direkt aus Maven heraus bauen.
 
 ## Jib (in diesem Repo verwendet)
